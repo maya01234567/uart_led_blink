@@ -18,26 +18,20 @@ static int numb = 0;
 
 void uartEventHandlerTask(void *Parameter)
 {
-    // printf("donee\n");
     uint8_t data[1024];
     size_t buffered_size;
-    // printf("1\n");
     while (1)
     {
         if (xQueueReceive(uart_queue, (void *)&event, portMAX_DELAY))
         {
             switch (event.type)
             {
-                //bzero(data, 1024); // xóa dữ liệu cũ tại
             case UART_DATA:
-                bzero(data, 1024);
-                // printf("done3\n");
                 numb = 0;
+            bzero(data, 1000); // xóa dữ liệu cũ tại
                 numb = uart_read_bytes(uart_num, data, event.size, portMAX_DELAY);
-                // printf("done4\n");
-                uartDataReceivedCallback(data, numb);
-                // printf("%d\n", value);
-                //  Event of HW FIFO overflow detected
+                uartDataReceivedCallback(data, event.size);
+                //   Event of HW FIFO overflow detected
                 break;
             case UART_FIFO_OVF:
                 // If fifo overflow happened, you should consider adding flow control for your application.

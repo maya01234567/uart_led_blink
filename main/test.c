@@ -17,7 +17,7 @@ struct min_context min_ctx;
 struct min_context min_ctx;
 void min_application_handler(uint8_t min_id, uint8_t const *min_payload, uint8_t len_payload, uint8_t port)
 {
-    ESP_LOGI("UART1", "DONE");
+    printf("done100 \n");
 }
 uint32_t min_time_ms(void)
 {
@@ -47,14 +47,17 @@ void min_tx_finished(uint8_t port) {}
 //
 void callback_recive_uart(uint8_t *data, size_t length)
 {
-    ESP_LOGI("UART", "DONE");
     if (length > 0)
     {
+        uint8_t j =0;
+        //min_poll(&min_ctx,&data,length);
         for (uint8_t i = 0; i < length; i++)
         {
-            printf("0x%x  ", data[i]);
+            printf("0x%x ", *(data));
+            min_poll(&min_ctx,data++,++j);
+            j=0;
         }
-        bzero(data, 1024);
+        printf("\n");
     }
 }
 
@@ -65,12 +68,12 @@ void app_main()
     output_io_creat(2);
     min_init_context(&min_ctx, 0);
     // xTaskCreate(blinkLed, "blinkLed", 2048, NULL, 4, NULL);
-    //  uart_enable_pattern_det_baud_intr(UART_NUM_2, '+', 3, 9, 0, 0);
-    //  uart_pattern_queue_reset(UART_NUM_2, 20);
+    uart_enable_pattern_det_baud_intr(UART_NUM_2, '+', 3, 9, 0, 0);
+    uart_pattern_queue_reset(UART_NUM_2, 20);
     uart_set_callback(callback_recive_uart);
-    // while (1)
-    // {
-        // min_send_frame(&min_ctx, 0, buff, sizeof(buff));
-        // vTaskDelay(1000 / portTICK_PERIOD_MS);
-    // }
+    while (1)
+    {
+    min_send_frame(&min_ctx, 0, buff, sizeof(buff));
+    vTaskDelay(1000 / portTICK_PERIOD_MS);
+    }
 }
