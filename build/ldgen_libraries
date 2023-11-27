@@ -60,11 +60,13 @@ C:/esp32/uart_led_blink/build/esp-idf/json/libjson.a
 C:/esp32/uart_led_blink/build/esp-idf/libsodium/liblibsodium.a
 C:/esp32/uart_led_blink/build/esp-idf/mqtt/libmqtt.a
 C:/esp32/uart_led_blink/build/esp-idf/openssl/libopenssl.a
+C:/esp32/uart_led_blink/build/esp-idf/protocol_examples_common/libprotocol_examples_common.a
 C:/esp32/uart_led_blink/build/esp-idf/spiffs/libspiffs.a
 C:/esp32/uart_led_blink/build/esp-idf/ulp/libulp.a
 C:/esp32/uart_led_blink/build/esp-idf/unity/libunity.a
 C:/esp32/uart_led_blink/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 C:/esp32/uart_led_blink/build/esp-idf/main/libmain.a
 C:/esp32/uart_led_blink/build/esp-idf/input_iot/libinput_iot.a
+C:/esp32/uart_led_blink/build/esp-idf/min_protocol/libmin_protocol.a
 C:/esp32/uart_led_blink/build/esp-idf/output_iot/liboutput_iot.a
 C:/esp32/uart_led_blink/build/esp-idf/uart_iot/libuart_iot.a

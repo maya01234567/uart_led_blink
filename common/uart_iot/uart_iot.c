@@ -14,24 +14,27 @@ uart_callback_t uartDataReceivedCallback = NULL;
 static uart_event_t event;
 static QueueHandle_t uart_queue;
 static uart_port_t uart_num;
+static int numb = 0;
 
 void uartEventHandlerTask(void *Parameter)
 {
-    printf("donee\n");
-    uint8_t data[1000];
+    // printf("donee\n");
+    uint8_t data[1024];
     size_t buffered_size;
-    printf("1\n");
+    // printf("1\n");
     while (1)
     {
         if (xQueueReceive(uart_queue, (void *)&event, portMAX_DELAY))
         {
-            printf("2\n");
             switch (event.type)
             {
-                int numb = 0;
-                bzero(data, 1024); // xóa dữ liệu cũ tại
+                //bzero(data, 1024); // xóa dữ liệu cũ tại
             case UART_DATA:
+                bzero(data, 1024);
+                // printf("done3\n");
+                numb = 0;
                 numb = uart_read_bytes(uart_num, data, event.size, portMAX_DELAY);
+                // printf("done4\n");
                 uartDataReceivedCallback(data, numb);
                 // printf("%d\n", value);
                 //  Event of HW FIFO overflow detected
@@ -83,14 +86,23 @@ void uartEventHandlerTask(void *Parameter)
                 break;
             }
         }
-        vTaskDelay(10/portTICK_PERIOD_MS);
+        vTaskDelay(10 / portTICK_PERIOD_MS);
     }
     free(data);
     vTaskDelete(NULL);
 }
-
-void uart_io_creat(uart_port_t uart_num, uint32_t baudrate, int tx_io_num, int rx_io_num)
+uint16_t uart_data_avaiable(void)
 {
+    return numb;
+}
+void uart_send_data(uart_port_t uart_num, const char *dtmp, size_t size)
+{
+    uart_write_bytes(uart_num, (const char *)dtmp, size);
+}
+
+void uart_io_creat(uart_port_t _uart_num, uint32_t baudrate, int tx_io_num, int rx_io_num)
+{
+    uart_num = _uart_num;
     uart_config_t uart_config = {
         .baud_rate = baudrate,
         .data_bits = UART_DATA_8_BITS,
@@ -99,14 +111,10 @@ void uart_io_creat(uart_port_t uart_num, uint32_t baudrate, int tx_io_num, int r
         .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
         .source_clk = UART_SCLK_APB,
     };
-    uart_param_config(uart_num, &uart_config);
-    printf("done\n");
-    uart_driver_install(uart_num, UART_FIFO_LEN * 2, UART_FIFO_LEN * 2, 10, &uart_queue, 0);
-    printf("done\n");
-    uart_set_pin(uart_num, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
-    printf("done\n");
+    uart_param_config(_uart_num, &uart_config);
+    uart_driver_install(_uart_num, UART_FIFO_LEN * 2, UART_FIFO_LEN * 2, 10, &uart_queue, 0);
+    uart_set_pin(_uart_num, tx_io_num, rx_io_num, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
     xTaskCreate(uartEventHandlerTask, "uartEventHandlerTask", 2048 * 2, NULL, 4, NULL);
-    printf("done\n");
 }
 void uart_set_callback(void *cb)
 {

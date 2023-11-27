@@ -563,6 +563,13 @@ C:/esp32/uart_led_blink/build/esp-idf/openssl/CMakeFiles/install.dir
 C:/esp32/uart_led_blink/build/esp-idf/openssl/CMakeFiles/edit_cache.dir
 C:/esp32/uart_led_blink/build/esp-idf/openssl/CMakeFiles/rebuild_cache.dir
 C:/esp32/uart_led_blink/build/esp-idf/openssl/CMakeFiles/list_install_components.dir
+C:/esp32/uart_led_blink/build/esp-idf/protocol_examples_common/CMakeFiles/__idf_protocol_examples_common.dir
+C:/esp32/uart_led_blink/build/esp-idf/protocol_examples_common/CMakeFiles/install/local.dir
+C:/esp32/uart_led_blink/build/esp-idf/protocol_examples_common/CMakeFiles/install.dir
+C:/esp32/uart_led_blink/build/esp-idf/protocol_examples_common/CMakeFiles/edit_cache.dir
+C:/esp32/uart_led_blink/build/esp-idf/protocol_examples_common/CMakeFiles/rebuild_cache.dir
+C:/esp32/uart_led_blink/build/esp-idf/protocol_examples_common/CMakeFiles/list_install_components.dir
+C:/esp32/uart_led_blink/build/esp-idf/protocol_examples_common/CMakeFiles/install/strip.dir
 C:/esp32/uart_led_blink/build/esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir
 C:/esp32/uart_led_blink/build/esp-idf/spiffs/CMakeFiles/install/local.dir
 C:/esp32/uart_led_blink/build/esp-idf/spiffs/CMakeFiles/install.dir
@@ -611,6 +618,13 @@ C:/esp32/uart_led_blink/build/esp-idf/input_iot/CMakeFiles/edit_cache.dir
 C:/esp32/uart_led_blink/build/esp-idf/input_iot/CMakeFiles/rebuild_cache.dir
 C:/esp32/uart_led_blink/build/esp-idf/input_iot/CMakeFiles/list_install_components.dir
 C:/esp32/uart_led_blink/build/esp-idf/input_iot/CMakeFiles/install/strip.dir
+C:/esp32/uart_led_blink/build/esp-idf/min_protocol/CMakeFiles/__idf_min_protocol.dir
+C:/esp32/uart_led_blink/build/esp-idf/min_protocol/CMakeFiles/install/local.dir
+C:/esp32/uart_led_blink/build/esp-idf/min_protocol/CMakeFiles/install.dir
+C:/esp32/uart_led_blink/build/esp-idf/min_protocol/CMakeFiles/edit_cache.dir
+C:/esp32/uart_led_blink/build/esp-idf/min_protocol/CMakeFiles/rebuild_cache.dir
+C:/esp32/uart_led_blink/build/esp-idf/min_protocol/CMakeFiles/list_install_components.dir
+C:/esp32/uart_led_blink/build/esp-idf/min_protocol/CMakeFiles/install/strip.dir
 C:/esp32/uart_led_blink/build/esp-idf/output_iot/CMakeFiles/__idf_output_iot.dir
 C:/esp32/uart_led_blink/build/esp-idf/output_iot/CMakeFiles/install/local.dir
 C:/esp32/uart_led_blink/build/esp-idf/output_iot/CMakeFiles/install.dir
